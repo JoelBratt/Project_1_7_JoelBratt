@@ -8,6 +8,21 @@ import math
 import random
 
 spots = [1, 2, 3, 4, 5, 6, 7, 8, 9,]
+wincons = [
+    #Horizontal
+    (0, 1, 2), (3, 4, 5), (6, 7, 8),
+    #Columns
+    (0, 3, 6), (1, 4, 7), (2, 5, 8),
+    #diag
+    (0, 4, 8), (2, 4, 6)
+]
+
+def win(spots, letter):
+    for combo in wincons:
+        if spots[combo[0]] == letter and spots[combo[1]] == letter and spots[combo[2]] == letter:
+            return True 
+    return False
+
 #is instance checks for int within spots
 openSpots = [spot for spot in spots if isinstance(spot, int)]
 
@@ -36,6 +51,9 @@ while len(openSpots) > 0:
     spots[currentPick-1] = xORo
     openSpots = [spot for spot in spots if isinstance(spot, int)]
 
+    if win(spots, xORo):
+        print("you win!")
+        break
 
     if len (openSpots) > 0:
         print("Picking spot")
@@ -43,6 +61,11 @@ while len(openSpots) > 0:
         cpuChoice = random.choice(openSpots)
         spots[cpuChoice-1] = cpuLetter
         openSpots = [spot for spot in spots if isinstance(spot, int)]
+
+    if win(spots, cpuLetter):
+        print("Cpu wins!")
+        break
+
 
 
 
