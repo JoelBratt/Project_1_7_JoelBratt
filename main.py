@@ -1,7 +1,7 @@
 """
 main.py
 Joel Bratt
-the main program tbd
+Main program tic tac toe
 6/26/2026
 """
 import math
