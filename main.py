@@ -19,8 +19,6 @@ while xORo != "X" and xORo != "O":
 else: print('Great lets move on\n')
 
 while len(openSpots) > 0:
-    openSpots = [spot for spot in spots if isinstance(spot, int)]
-
 
     print(f' {spots[0]} | {spots[1]} | {spots[2]} \n'
           f'----------\n'
@@ -32,17 +30,15 @@ while len(openSpots) > 0:
 
     currentPick = int(input("pick an open spot at numbers 1-9: \n"))
 
+    while spots[currentPick-1] == "X" or spots[currentPick-1] == "O":
+        currentPick = int(input("pick an OPEN spot at numbers 1-9: \n"))
+
     spots[currentPick-1] = xORo
+    openSpots = [spot for spot in spots if isinstance(spot, int)]
 
-    print(f' {spots[0]} | {spots[1]} | {spots[2]} \n'
-          f'----------\n'
-          f' {spots[3]} | {spots[4]} | {spots[5]} \n'
-          f'----------\n'
-          f' {spots[6]} | {spots[7]} | {spots[8]} \n')
 
-    print("Picking spot")
-
-    if openSpots:
+    if len (openSpots) > 0:
+        print("Picking spot")
         cpuLetter = "O" if xORo == "X" else "X"
         cpuChoice = random.choice(openSpots)
         spots[cpuChoice-1] = cpuLetter
@@ -51,7 +47,11 @@ while len(openSpots) > 0:
 
 
 
-
+print(  f' {spots[0]} | {spots[1]} | {spots[2]} \n'
+        f'----------\n'
+        f' {spots[3]} | {spots[4]} | {spots[5]} \n'
+        f'----------\n'
+        f' {spots[6]} | {spots[7]} | {spots[8]} \n')
 print("Game Over")
 
 
