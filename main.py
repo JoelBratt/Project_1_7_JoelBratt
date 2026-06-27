@@ -18,5 +18,9 @@ print(f' {spots[0]} | {spots[1]} | {spots[2]} \n'
       f' {spots[3]} | {spots[4]} | {spots[5]} \n'
       f'----------\n'
       f' {spots[6]} | {spots[7]} | {spots[8]} ')
-print("pick a number 1-9: ")
-pick = input((int))
+currentPick = int(input("pick an open spot at numbers 1-9: "))
+spots.insert(currentPick, xORo)
+spots.pop(currentPick-1)
+
+
+
